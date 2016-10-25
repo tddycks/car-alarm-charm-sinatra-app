@@ -1,6 +1,7 @@
 Users
- - have many comments
- - have many events through user_events
+ - has many comments
+ - has many user_events
+ - has many events through user_events
 
  Comments
  - belongs to user
@@ -9,23 +10,33 @@ Users
 
  Events
  - has many comments
+ - has many user_events
  - has many users through user_events
 
 UserEvent
 - belongs to user
 - belongs to event
 
+---------------
+Columns in DB:
 
-Events have:
-Address
-Car description
-license plate number
+Events:
+address
+car_description
+license_number
 Timestamp
 
-Users have:
+Users:
 username
 password
 email
 
-Reviews have:
+Comments:
 content
+user.id
+event.id
+
+UserEvents:
+user_id
+event_id
+
