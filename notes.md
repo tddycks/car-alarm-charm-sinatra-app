@@ -33,8 +33,8 @@ email
 
 Comments:
 content
-user.id
-event.id
+user_id
+event_id
 
 UserEvents:
 user_id
