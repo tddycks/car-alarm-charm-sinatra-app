@@ -1,17 +1,18 @@
-Users
+User
  - has many comments
  - has many user_events
  - has many events through user_events
 
- Comments
+ Event
+ - has many comments
+ - has many user_events
+ - has many users through user_events
+
+ Comment
  - belongs to user
  - belongs to event
 
 
- Events
- - has many comments
- - has many user_events
- - has many users through user_events
 
 UserEvent
 - belongs to user
@@ -22,9 +23,9 @@ Columns in DB:
 
 Events:
 address
-car_description
+car_model
 license_number
-Timestamp
+Datetime
 
 Users:
 username
@@ -32,7 +33,7 @@ password
 email
 
 Comments:
-content
+content (t.text?)
 user_id
 event_id
 
