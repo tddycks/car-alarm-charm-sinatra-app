@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  get '/signup' do
+  get "/signup" do
     if logged_in?
       redirect "/events"
     else 
@@ -14,6 +14,16 @@ class UsersController < ApplicationController
       redirect "/events"
     else 
       erb :"users/login"
+    end
+  end
+
+  post '/signup' do
+    #raise params.inspect
+    user = User.new(params)
+    if user.save 
+      session[:user_id] = user.id
+    else
+      redirect "/signup"
     end
   end
 
