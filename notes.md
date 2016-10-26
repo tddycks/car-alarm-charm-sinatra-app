@@ -33,7 +33,8 @@ password
 email
 
 Comments:
-content (t.text?)
+content
+datetime
 user_id
 event_id
 
