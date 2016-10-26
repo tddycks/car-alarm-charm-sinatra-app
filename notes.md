@@ -42,3 +42,7 @@ UserEvents:
 user_id
 event_id
 
+--------------
+
+default home page: "/events"
+

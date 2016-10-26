@@ -1,14 +1,20 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    "Signup here"
+    if logged_in?
+      redirect "/events"
+    else 
+      erb :"users/create_user"
+    end
+    
   end
 
   get '/login' do
-    "Login here"
+    if logged_in?
+      redirect "/events"
+    else 
+      erb :"users/login"
+    end
   end
-
-  
-
 
 end
