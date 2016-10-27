@@ -1,22 +1,15 @@
 User
  - has many comments
- - has many user_events
- - has many events through user_events
+ - has many events
 
  Event
  - has many comments
- - has many user_events
- - has many users through user_events
+ - belongs to user
 
  Comment
  - belongs to user
  - belongs to event
 
-
-
-UserEvent
-- belongs to user
-- belongs to event
 
 ---------------
 Columns in DB:
@@ -26,6 +19,7 @@ address
 car_model
 license_number
 Datetime
+user_id
 
 Users:
 username
@@ -38,11 +32,7 @@ datetime
 user_id
 event_id
 
-UserEvents:
-user_id
-event_id
 
 --------------
 
-default home page: "/events"
 

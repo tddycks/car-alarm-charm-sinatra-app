@@ -17,7 +17,13 @@ class EventsController < ApplicationController
   end
 
   post "/events" do 
-    raise params.inspect
+    #raise params.inspect
+    if logged_in?
+      event = Event.create(params)
+      redirect "/events"
+    else
+      redirect "/"
+    end
   end
 
 
