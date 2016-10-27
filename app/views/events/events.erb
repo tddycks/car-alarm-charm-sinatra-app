@@ -1,3 +1,11 @@
-<h4>Car Alarm Reports</h4>
+<h1>Car Alarms Reported in NYC</h1>
 
-<a href="/events/new">Report New Car Alarm</a>&nbsp&nbsp<a href="/logout">Logout</a>
+<h2><a href="/events/new">Report New Car Alarm</a>&nbsp&nbsp<a href="/logout">Logout</a></br></h2>
+
+<% Event.all.each do |event| %>
+<h4>Address: <%= event.address %></h4>
+<%= event.car_model %>
+<%= event.license_plate %>
+<%= event.created_at %>
+
+<% end %>
