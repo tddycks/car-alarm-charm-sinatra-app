@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    #raise params.inspect
     user = User.new(params)
     if user.save 
       session[:user_id] = user.id
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   post "/login" do
-    #raise params.inspect
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
