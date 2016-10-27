@@ -9,7 +9,15 @@ class EventsController < ApplicationController
   end
 
   get "/events/new" do
-    "Create new event"
+    if logged_in?
+      erb :"events/create_event"
+    else
+      redirect "/"
+    end
+  end
+
+  post "/events" do 
+    raise params.inspect
   end
 
 
