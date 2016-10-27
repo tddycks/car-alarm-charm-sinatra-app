@@ -1,11 +1,18 @@
 <h1>Car Alarms Reported in NYC</h1>
 
-<h2><a href="/events/new">Report New Car Alarm</a>&nbsp&nbsp<a href="/logout">Logout</a></br></h2>
+<h3><a href="/events/new">Report New Car Alarm</a>&nbsp&nbsp<a href="/logout">Logout</a></br></h3>
 
 <% Event.all.each do |event| %>
-<h4>Address: <%= event.address %></h4>
-<%= event.car_model %>
-<%= event.license_plate %>
-<%= event.created_at %>
+<h4>Address: <%= event.address %><%= event.borough %></h4>
+<h4>Model of Car: <%= event.car_model %></h4>
+<h4>License Plate Number: <%= event.license_plate %></h4>
+<h4>Reported at: <%= event.created_at %></h4>
+----------------------------------------
+<h3>Comments</h3>
+<% event.comments.each do |comment| %>
+<%= comment.content %>
+<% user = User.find(comment.user_id) %>
+<p><%= user.username %></p>
+<% end %>
 
 <% end %>
