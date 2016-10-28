@@ -1,3 +1,9 @@
+<h1>Here are the alarms you've reported:</h1>
+
+<% if flash.has?(:message) %>
+  <h4><%= flash[:message] %></h4>
+<% end %>
+
 <% @user.events.reverse.each do |event| %>
   <h4>Address: <%= event.address %>&nbsp<%= event.borough %></h4>
   <h4>Model of Car: <%= event.car_model %></h4>

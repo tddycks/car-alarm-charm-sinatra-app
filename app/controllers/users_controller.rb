@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug" do 
-    if logged_in?
+    if session[:user_id] == User.find_by_slug(params[:slug]).id
       @user = User.find_by_slug(params[:slug])
       erb :"users/show"
     else

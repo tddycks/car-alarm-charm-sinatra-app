@@ -33,7 +33,13 @@ class EventsController < ApplicationController
   end
 
   delete "/events/:id/delete" do 
-    "delete car alarm"
+    if current_user.events.include?(Event.find(params[:id]))
+      Event.find(params[:id]).destroy
+      flash[:message] = "Alarm Deleted!"
+      redirect "/users/#{current_user.slug}"
+    else
+      redirect "/"
+    end
   end
 
 
