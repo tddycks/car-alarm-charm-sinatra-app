@@ -8,6 +8,16 @@
 <h4>License Plate Number: <%= event.license_plate %></h4>
 <h4>Reported at: <%= event.created_at %></h4>
 
+<%if current_user.events.include?(event) %>
+
+  <h3><a href="/events/<%= event.id %>/edit">Edit Alarm</a></h3>
+
+  <form action="/events/<%= event.id %>/delete" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Alarm">
+  </form>
+<% end %>
+
 <h3>Comments</h3>
 <% event.comments.each do |comment| %>
 <%= comment.content %>
