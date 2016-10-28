@@ -19,7 +19,6 @@ class EventsController < ApplicationController
   end
 
   post "/events" do 
-    #raise params.inspect
     if !params[:address].empty? && !params[:borough].empty?
       current_user.events.create(params)
       redirect "/users/#{current_user.slug}"

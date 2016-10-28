@@ -1,0 +1,7 @@
+<% @user.events.reverse.each do |event| %>
+  <h4>Address: <%= event.address %>&nbsp<%= event.borough %></h4>
+  <h4>Model of Car: <%= event.car_model %></h4>
+  <h4>License Plate Number: <%= event.license_plate %></h4>
+  <h4>Reported at: <%= event.created_at %></h4>
+<% end %>
+
