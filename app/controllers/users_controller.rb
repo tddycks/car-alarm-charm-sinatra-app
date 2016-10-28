@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     
   end
 
-  get '/login' do
+  get "/login" do
     if logged_in?
       redirect "/events"
     else 

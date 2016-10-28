@@ -1,3 +1,4 @@
+require "pry"
 class EventsController < ApplicationController
 
   use Rack::Flash
@@ -29,8 +30,29 @@ class EventsController < ApplicationController
   end
 
   get "/events/:id/edit" do 
-    "edit car alarm"
+    if current_user.events.include?(Event.find(params[:id]))
+      @event = Event.find(params[:id])
+      erb :"events/edit_event"
+    else
+      redirect "/"
+    end
   end
+
+  get "/events/:id" do
+    erb :"events/show"
+  end
+
+  patch "/events/:id" do 
+    #raise params.inspect
+    if current_user.events.include?(Event.find(params[:id])) && !params[:address].empty?
+      @event = Event.find(params[:id])
+      @event.update(address: params[:address], borough: params[:borough], license_plate: params[:license_plate], car_model: params[:car_model])
+      redirect "/events/#{@event.id}"
+    else
+      redirect "/"
+    end
+  end
+
 
   delete "/events/:id/delete" do 
     if current_user.events.include?(Event.find(params[:id]))

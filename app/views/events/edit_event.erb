@@ -1,0 +1,27 @@
+<h1>Edit Your Reported Car Alarm</h1>
+
+<form action="/events/<%= @event.id %>" method="POST">
+<input type="hidden" id="hidden" name="_method" value="PATCH">
+
+<label for="address">Address: </label>
+<input type="text" name="address" id="address" value="<%= @event.address %>">
+
+<label for="borough">Borough: </label> 
+<select name="borough" id="borough">
+  <option value="brooklyn">Brooklyn</option>
+  <option value="bronx">Bronx</option>
+  <option value="manhattan">Manhattan</option>
+  <option value="staten_island">Staten Island</option>
+  <option value="queens">Queens</option>
+</select>
+
+
+<label for="car_model">Car Model: </label>
+<input type="text" name="car_model" id="car_model" value="<%= @event.car_model %>">
+
+<label for="license_plate">License Plate Number: </label>
+<input type="text" name="license_plate" id="license_plate" value="<%= @event.license_plate %>"><br>
+
+<input type="submit" value="Submit">
+
+</form>
