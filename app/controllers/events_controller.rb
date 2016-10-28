@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  use Rack::Flash
+
   get '/events' do
     if logged_in?
       erb :"events/events"
@@ -18,11 +20,12 @@ class EventsController < ApplicationController
 
   post "/events" do 
     #raise params.inspect
-    if logged_in?
-      event = Event.create(params)
-      redirect "/events"
+    if !params[:address].empty? && !params[:borough].empty?
+      current_user.events.create(params)
+      redirect "/users/#{current_user.slug}"
     else
-      redirect "/"
+      flash[:message] = "Please enter an approximate address and borough:"
+      redirect "/events/new"
     end
   end
 
