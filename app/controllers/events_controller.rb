@@ -18,14 +18,22 @@ class EventsController < ApplicationController
     end
   end
 
-  post "/events" do 
-    if !params[:address].empty? && !params[:borough].empty?
+  post "/events" do
+    if !params[:address].empty?
       current_user.events.create(params)
       redirect "/users/#{current_user.slug}"
     else
       flash[:message] = "Please enter an approximate address and borough:"
       redirect "/events/new"
     end
+  end
+
+  get "/events/:id/edit" do 
+    "edit car alarm"
+  end
+
+  delete "/events/:id/delete" do 
+    "delete car alarm"
   end
 
 

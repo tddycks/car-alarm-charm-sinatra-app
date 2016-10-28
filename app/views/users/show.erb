@@ -3,5 +3,15 @@
   <h4>Model of Car: <%= event.car_model %></h4>
   <h4>License Plate Number: <%= event.license_plate %></h4>
   <h4>Reported at: <%= event.created_at %></h4>
+  
+  <h3><a href="/events/<%= event.id %>/edit">Edit</a></h3>
+
+  <form action="/events/<%= event.id %>/delete" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+  </form>
+
+  -------------------------
 <% end %>
+
 
