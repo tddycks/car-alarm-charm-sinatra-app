@@ -43,10 +43,10 @@ class EventsController < ApplicationController
   end
 
   patch "/events/:id" do 
-    #raise params.inspect
     if current_user.events.include?(Event.find(params[:id])) && !params[:address].empty?
       @event = Event.find(params[:id])
       @event.update(address: params[:address], borough: params[:borough], license_plate: params[:license_plate], car_model: params[:car_model])
+      flash[:message] = "Alarm Updated!"
       redirect "/events/#{@event.id}"
     else
       redirect "/"
