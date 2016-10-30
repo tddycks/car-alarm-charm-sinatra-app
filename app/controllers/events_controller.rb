@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
   post "/events" do
     if !params[:address].empty?
-      current_user.events.create(params)
+      current_user.events.create(address: params[:address], borough: params[:borough], license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/[^a-zA-Z0-9]/, ""), car_model: params[:car_model])
       redirect "/users/#{current_user.slug}"
     else
       flash[:message] = "Please enter an approximate address and borough:"
@@ -50,7 +50,7 @@ class EventsController < ApplicationController
   patch "/events/:id" do 
     if current_user.events.include?(Event.find(params[:id])) && !params[:address].empty?
       @event = Event.find(params[:id])
-      @event.update(address: params[:address], borough: params[:borough], license_plate: params[:license_plate], car_model: params[:car_model])
+      @event.update(address: params[:address], borough: params[:borough], license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/[^a-zA-Z0-9]/, ""), car_model: params[:car_model])
       flash[:message] = "Alarm Updated!"
       redirect "/events/#{@event.id}"
     else
