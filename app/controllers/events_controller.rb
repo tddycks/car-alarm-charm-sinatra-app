@@ -39,7 +39,12 @@ class EventsController < ApplicationController
   end
 
   get "/events/:id" do
-    erb :"events/show"
+    if logged_in?
+      @event = Event.find(params[:id])
+      erb :"events/show"
+    else
+      erb "/"
+    end
   end
 
   patch "/events/:id" do 
