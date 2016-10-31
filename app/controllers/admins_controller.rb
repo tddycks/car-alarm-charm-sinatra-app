@@ -25,7 +25,7 @@ class AdminsController < ApplicationController
     if session[:admin_id] == Admin.find_by_username(params[:username]).id
       erb :"admins/show"
     else
-      "hello"
+      redirect "/"
     end
   end
 

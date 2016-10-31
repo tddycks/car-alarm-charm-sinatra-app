@@ -1,1 +1,25 @@
-<h1>erb hello</h1>
+<h1>Hi Tadzio, here's what's happening:</h1>
+
+
+<h3>The most recent signups:</h3>
+<% User.all.reverse.each do |user| %>
+Username: <%= user.username %>&nbsp
+Email: <%= user.email %><br>
+<% end %>
+
+
+<h3>The most recent events:</h3>
+<% Event.all.reverse.each do |event| %>
+<h4>Address: <%= event.address %></a>&nbsp<%= event.borough %></h4>
+<h4>Model of Car: <%= event.car_model %></h4>
+<h4>License Plate Number: <%= event.license_plate %></h4>
+<h4>Reported at: <%= event.created_at %></h4>
+
+<h3><%= event.comments.count %> Comments</h3>
+<% event.comments.each do |comment| %>
+<%= comment.content %>
+<% user = User.find(comment.user_id) %>
+<p><%= user.username %></p>
+<% end %>
+----------------------------------------
+<% end %>
