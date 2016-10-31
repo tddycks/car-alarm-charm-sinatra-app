@@ -20,11 +20,7 @@
 <% end %>
 
 <h3><%= event.comments.count %> Comments</h3>
-<% event.comments.each do |comment| %>
-<%= comment.content %>
-<% user = User.find(comment.user_id) %>
-<p><%= user.username %></p>
-<% end %>
+
 ----------------------------------------
 
 <% end %>

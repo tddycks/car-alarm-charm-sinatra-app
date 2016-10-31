@@ -24,3 +24,10 @@
 <% user = User.find(comment.user_id) %>
 <p><%= user.username %></p>
 <% end %>
+
+<form action="/comments" method="POST">
+<label for="content">Add Comment:</label>
+<input type="text" id="content" name="content">
+<input type="hidden" name="event_id" value="<%= @event.id %>">
+<input type="submit" value="Submit Comment">
+</form>
