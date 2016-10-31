@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     if user.save 
       session[:user_id] = user.id
       user.update(license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, ""))
+      user.update(admin_id: "1")
       redirect "/events"
     else
       redirect "/signup"
