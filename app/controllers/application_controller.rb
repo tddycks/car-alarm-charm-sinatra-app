@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect "/events"
     else
-      erb :index
+      erb :"public/index", :layout => :"public/layout"
     end
   end
 
