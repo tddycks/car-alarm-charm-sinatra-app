@@ -1,20 +1,27 @@
-<h4>Sign Up Here!</h4>
+<h1>Create an Account to Report an Alarm</h1>
 
 <form action="/signup" method="POST">
 
-<label for="username">Username: </label>
-<input type="text" name="username" id="username">
+  <div class="form-group">
+    <label for="username">Username: </label>
+    <input class="form-control" type="text" name="username" id="username">
+  </div>
 
-<label for="email">Email: </label>
-<input type="email" name="email" id="email">
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input class="form-control" type="email" name="email" id="email">
+  </div>
 
-<label for="password">Password: </label>
-<input type="password" name="password" id="password"><br>
+  <div class="form-group">
+    <label for="password">Password: </label>
+    <input <input class="form-control" type="password" name="password" id="password">
+  </div>
 
-Add your New York State license plate number and get emailed if your car alarm is reported as going off (you'll always remain anonymous):
-<input type="text" name="license_plate"><br>
+  <div class="form-group">
+    <label for="license_plate">Add your New York State license plate number and get emailed if your car alarm is reported as going off (you'll always remain anonymous): </label>
+    <input class="form-control" type="text" name="license_plate" id="license_plate">
+  </div>
 
-<input type="submit" value="Create Account">
-
+  <input class="btn btn-default" type="submit" value="Create Account">
 
 </form>
