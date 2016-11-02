@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/events"
     else 
-      erb :"users/create_user"
+      erb :"users/create_user", :layout => :"public/layout"
     end
     
   end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/events"
     else 
-      erb :"users/login"
+      erb :"users/login", :layout => :"public/layout"
     end
   end
 
