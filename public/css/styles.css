@@ -2,3 +2,12 @@ body {
   padding-top: 50px;
   padding-left: 40px;
 }
+
+
+.panel {
+  padding-bottom: 0px;
+}
+
+.btn.btn-default {
+margin-bottom: 40px;
+}
