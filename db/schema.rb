@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031200056) do
+ActiveRecord::Schema.define(version: 20161102002900) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161031200056) do
     t.string  "email"
     t.string  "license_plate"
     t.integer "admin_id"
+    t.string  "borough"
   end
 
 end

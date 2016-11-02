@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
   get '/events' do
     if logged_in?
+      @borough = current_user.borough
       erb :"events/events"
     else
       redirect "/"

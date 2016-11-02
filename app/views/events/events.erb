@@ -1,27 +1,26 @@
-<h1>Car Alarms Reported in NYC</h1>
-
-<h3><a href="/events/new">Report New Car Alarm</a>&nbsp&nbsp<a href="/logout">Logout</a></br></h3>
+<h1>Car Alarms Reported in <%= @borough %></h1>
 
 <% Event.all.reverse.each do |event| %>
-<h4><a href="/events/<%= event.id %>">Address: <%= event.address %></a>&nbsp<%= event.borough %></h4>
-<h4>Model of Car: <%= event.car_model %></h4>
-<h4>License Plate Number: <%= event.license_plate %></h4>
-<h4>Reported at: <%= event.created_at %></h4>
+<% if event.borough == @borough %>
+  <h4><a href="/events/<%= event.id %>">Address: <%= event.address %></a>&nbsp<%= event.borough %></h4>
+  <h4>Model of Car: <%= event.car_model %></h4>
+  <h4>License Plate Number: <%= event.license_plate %></h4>
+  <h4>Reported at: <%= event.created_at %></h4>
 
-<%if current_user.events.include?(event) %>
+  <%if current_user.events.include?(event) %>
 
-  <h3><a href="/events/<%= event.id %>/edit">Edit Alarm</a></h3>
+    <h3><a href="/events/<%= event.id %>/edit">Edit Alarm</a></h3>
 
-  <form action="/events/<%= event.id %>/delete" method="POST">
-  <input type="hidden" id="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Alarm">
-  </form>
+    <form action="/events/<%= event.id %>/delete" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Alarm">
+    </form>
 
-<% end %>
+  <% end %>
 
 <h3><%= event.comments.count %> Comments</h3>
 <a href="/events/<%= event.id %>">Add comment</a><br>
 
 ----------------------------------------
-
+<% end %>
 <% end %>
