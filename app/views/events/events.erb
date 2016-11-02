@@ -1,8 +1,24 @@
 <h1>Car Alarms Reported in <%= @borough %></h1>
 
+<form action="/events/borough" method="POST">
+ <div class="form-group">
+    <label for="borough">Change borough:</label>
+    <select class="form-control" name="borough" id="borough">
+      <option value="Brooklyn">Brooklyn</option>
+      <option value="Bronx">Bronx</option>
+      <option value="Manhattan">Manhattan</option>
+      <option value="Staten Island">Staten Island</option>
+      <option value="Queens">Queens</option>
+    </select>
+  </div>
+
+  <input class="btn btn-default" type="submit" value="Submit">
+
+</form>
+
 <% Event.all.reverse.each do |event| %>
 <% if event.borough == @borough %>
-  <h4><a href="/events/<%= event.id %>">Address: <%= event.address %></a>&nbsp<%= event.borough %></h4>
+  <h4>Approximate address: <a href="/events/<%= event.id %>"><%= event.address %></a>&nbsp<%= event.borough %></h4>
   <h4>Model of Car: <%= event.car_model %></h4>
   <h4>License Plate Number: <%= event.license_plate %></h4>
   <h4>Reported at: <%= event.created_at %></h4>

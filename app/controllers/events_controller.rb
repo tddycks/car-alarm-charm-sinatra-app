@@ -12,6 +12,15 @@ class EventsController < ApplicationController
     end
   end
 
+  post "/events/borough" do
+    if logged_in?
+      @borough = params[:borough]
+      erb :"events/events"
+    else
+      redirect "/"
+    end
+  end
+
   get "/events/new" do
     if logged_in?
       erb :"events/create_event"
@@ -23,7 +32,7 @@ class EventsController < ApplicationController
   post "/events" do
     if !params[:address].empty?
       current_user.events.create(admin_id: "1", address: params[:address], borough: params[:borough], license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, ""), car_model: params[:car_model])
-      redirect "/users/#{current_user.slug}"
+      redirect "/events/#{Event.last.id}"
     else
       flash[:message] = "Please enter an approximate address and borough:"
       redirect "/events/new"
