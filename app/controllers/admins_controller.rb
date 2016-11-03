@@ -3,7 +3,7 @@ require "pry"
 class AdminsController < ApplicationController
 
   get "/admins/login" do
-    erb :"admins/login"
+    erb :"admins/login", :layout => :"public/layout"
   end
 
   post "/admins/login" do 
@@ -23,7 +23,7 @@ class AdminsController < ApplicationController
 
   get "/admins/:username" do 
     if session[:admin_id] == Admin.find_by_username(params[:username]).id
-      erb :"admins/show"
+      erb :"admins/show", :layout => :"public/layout"
     else
       redirect "/"
     end

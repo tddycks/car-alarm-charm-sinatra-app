@@ -32,18 +32,18 @@ class EventsController < ApplicationController
 
   post "/events" do
     Pony.mail({
-  :to => 'performingsites@gmail.com',
-  :via => :smtp,
-  :via_options => {
-    :address              => 'smtp.gmail.com',
-    :port                 => '587',
-    :enable_starttls_auto => true,
-    :user_name            => 'caralarmcharm@gmail.com',
-    :password             => 'password',
-    :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-    :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
-  }
-})
+      :to => 'performingsites@gmail.com',
+      :via => :smtp,
+      :via_options => {
+        :address              => 'smtp.gmail.com',
+        :port                 => '587',
+        :enable_starttls_auto => true,
+        :user_name            => 'caralarmcharm@gmail.com',
+       :password             => 'password',
+        :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
+        }
+      })
     if !params[:address].empty?
       current_user.events.create(admin_id: "1", address: params[:address], borough: params[:borough], license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, ""), car_model: params[:car_model])
       if User.find {|user| user.license_plate == params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, "")}
@@ -51,6 +51,7 @@ class EventsController < ApplicationController
             :from => 'caralarmcharm@gmail.com',
             :subject => 'Your car alarm is going off. Please return to your car :)'
       end
+      flash[:message] = "Great! Now leave a comment and let people know if you've reported the car alarm to 311 or have taken other actions."
       redirect "/events/#{Event.last.id}"
     else
       flash[:message] = "Please enter an approximate address:"
