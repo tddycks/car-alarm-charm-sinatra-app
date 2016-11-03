@@ -1,7 +1,15 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
 body {
   padding-top: 60px;
   padding-left: 40px;
+  margin-bottom: 60px;
 }
+
 
 .btn.btn-default {
 margin-bottom: 40px;
@@ -29,3 +37,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  #background-color: #ffffff
+}
