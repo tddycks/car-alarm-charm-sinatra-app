@@ -1,23 +1,32 @@
 <h1>Here are the alarms you've reported:</h1>
 
 <% if flash.has?(:message) %>
-  <h4><%= flash[:message] %></h4>
+  <h2><%= flash[:message] %></h2>
 <% end %>
 
 <% @user.events.reverse.each do |event| %>
-  <h4>Address: <%= event.address %>&nbsp<%= event.borough %></h4>
-  <h4>Model of Car: <%= event.car_model %></h4>
-  <h4>License Plate Number: <%= event.license_plate %></h4>
-  <h4>Reported at: <%= event.created_at %></h4>
-  
-  <h3><a href="/events/<%= event.id %>/edit">Edit</a></h3>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Approximate address: <a href="/events/<%= event.id %>"><%= event.address %></h3>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Reported at:
+    <% t = event.created_at + Time.zone_offset('EST') %>
+    <%= t.strftime('%r, %A %B %d %Y') %></li>
+    <li class="list-group-item">Model of Car: <%= event.car_model %></li>
+    <li class="list-group-item">License Plate Number: <%= event.license_plate %></li>
+    <li class="list-group-item"><%= event.comments.count %> Comments</li>
+  </ul>
+</div>
+<a href="/events/<%= event.id %>/edit" class="btn btn-primary btn-md" role="button">Edit Alarm</a>
 
-  <form action="/events/<%= event.id %>/delete" method="POST">
+<form action="/events/<%= event.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
-  </form>
+  <input class="btn btn-danger btn-md" type="submit" value="Delete Alarm">
+</form>
 
-  -------------------------
 <% end %>
+
+
 
 

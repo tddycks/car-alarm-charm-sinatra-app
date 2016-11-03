@@ -1,7 +1,7 @@
 <h1>Report a Car Alarm</h1>
 
 <% if flash.has?(:message) %>
-  <h4><%= flash[:message] %></h4>
+  <h2><%= flash[:message] %></h2>
 <% end %>
 
 <form action="/events" method="POST">

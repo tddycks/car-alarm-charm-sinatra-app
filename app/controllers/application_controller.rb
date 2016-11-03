@@ -1,5 +1,6 @@
 require 'pry'
 require 'rack-flash'
+require 'pony'
 
 class ApplicationController < Sinatra::Base
   configure do 

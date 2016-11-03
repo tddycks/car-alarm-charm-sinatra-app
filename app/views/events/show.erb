@@ -1,10 +1,10 @@
 <% if flash.has?(:message) %>
-  <h4><%= flash[:message] %></h4>
+  <h2><%= flash[:message] %></h2>
 <% end %>
 
 <div class="panel panel-danger">
   <div class="panel-heading">
-    <h3 class="panel-title">Approximate address: <%= @event.address %> %></h3>
+    <h3 class="panel-title">Approximate address: <%= @event.address %></h3>
   </div>
   <ul class="list-group">
     <li class="list-group-item">Reported at:
@@ -28,15 +28,19 @@
 
 
 <h3><%= @event.comments.count %> Comments</h3>
-<% @event.comments.each do |comment| %>
+  <% @event.comments.each do |comment| %>
+  <div class="comments-list">
+    <h4 class="user_name"><% user = User.find(comment.user_id) %><%= user.username %></h4>
 <%= comment.content %>
-<% user = User.find(comment.user_id) %>
-<p><%= user.username %></p>
+<p class="pull-right"><small><% t = comment.created_at + Time.zone_offset('EST') %>
+    <%= t.strftime('%r, %A %B %d %Y') %></small></p>
+</div>
 <% end %>
 
+
 <form action="/comments" method="POST">
-<label for="content">Add Comment:</label>
-<input type="text" id="content" name="content">
-<input type="hidden" name="event_id" value="<%= @event.id %>">
-<input type="submit" value="Submit Comment">
+  <label for="content">Add Comment:</label>
+  <input type="text" id="content" name="content">
+  <input type="hidden" name="event_id" value="<%= @event.id %>">
+  <input class="btn btn-secondary btn-sm" type="submit" value="Submit Comment">
 </form>

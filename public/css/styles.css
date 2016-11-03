@@ -3,12 +3,28 @@ body {
   padding-left: 40px;
 }
 
-
-
 .btn.btn-default {
 margin-bottom: 40px;
 }
 
 .btn.btn-primary {
   margin-bottom: 10px
+}
+
+.btn.btn-danger {
+  margin-bottom: 30px
+}
+
+h1 {
+  margin-bottom: 30px
+}
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+
+.comments-list {
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 20px;
 }
