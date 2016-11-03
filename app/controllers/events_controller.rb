@@ -31,26 +31,26 @@ class EventsController < ApplicationController
   end
 
   post "/events" do
-#    Pony.mail({
-#  :to => 'doliwa@hotmail.com',
-#  :via => :smtp,
-#  :via_options => {
-#    :address              => 'smtp.gmail.com',
-#    :port                 => '587',
-#    :enable_starttls_auto => true,
-#    :user_name            => 'gmail email address',
-#    :password             => 'password',
-#    :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-#    :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
-#  }
-#})
+    Pony.mail({
+  :to => 'performingsites@gmail.com',
+  :via => :smtp,
+  :via_options => {
+    :address              => 'smtp.gmail.com',
+    :port                 => '587',
+    :enable_starttls_auto => true,
+    :user_name            => 'caralarmcharm@gmail.com',
+    :password             => 'sinatraAPP16',
+    :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+    :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
+  }
+})
     if !params[:address].empty?
       current_user.events.create(admin_id: "1", address: params[:address], borough: params[:borough], license_plate: params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, ""), car_model: params[:car_model])
-      #if User.find {|user| user.license_plate == params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, "")}
-        #Pony.mail :to => 'email@email.com',
-        #    :from => 'email@email.com',
-        #    :subject => 'Your car alarm is going off. Please return to your car :)'
-      #end
+      if User.find {|user| user.license_plate == params[:license_plate].upcase.gsub(" ", "").gsub(/\W/, "")}
+        Pony.mail :to => 'doliwa@hotmail.com',
+            :from => 'caralarmcharm@gmail.com',
+            :subject => 'Your car alarm is going off. Please return to your car :)'
+      end
       redirect "/events/#{Event.last.id}"
     else
       flash[:message] = "Please enter an approximate address:"
@@ -97,6 +97,4 @@ class EventsController < ApplicationController
       redirect "/"
     end
   end
-
-
 end
