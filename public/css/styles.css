@@ -10,6 +10,10 @@ body {
   margin-bottom: 60px;
 }
 
+.show {
+  margin-top: 40px;
+}
+
 
 .btn.btn-default {
 margin-bottom: 40px;
@@ -41,5 +45,5 @@ h1 {
 .footer {
   position: absolute;
   bottom: 0;
- 
+
 }
