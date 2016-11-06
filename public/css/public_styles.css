@@ -12,9 +12,26 @@
 .bg-2 {
   background-color: #f6f6f6;
   color: #262626;
+  padding: 60px 50px;
 }
 
-h2 {
-  margin-top: 50px;
-  margin-bottom: 50px;
+.bg-3 {
+  background-color: #ffffff;
+  color: #262626;
+
+}
+
+.container-fluid.bg-3 {
+  padding: 60px 50px;
+}
+
+
+img {
+  max-width: 100%; 
+  height: auto;
+}
+
+.glyphicon {
+    font-size: 50px;
+    color: #ee2d56
 }
