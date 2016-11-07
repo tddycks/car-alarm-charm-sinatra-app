@@ -37,9 +37,6 @@ event_id
 
 Still to do:
 
-- add ability for site to email user if their license plate has been reported
-- build public index page (bootstrap)
-- buid visuals of site with bootstrap
 - add 404 page and routes
 
 
