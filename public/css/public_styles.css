@@ -1,6 +1,16 @@
-.footer {
-  position: absolute;
-  bottom: 0;
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #ffffff;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:1;
+}
+
+body {
+  padding-top: 30px;
+ 
 }
 
 .bg-1 {
@@ -35,3 +45,21 @@ img {
     font-size: 50px;
     color: #ee2d56
 }
+
+.signup {
+  padding: 30px
+}
+
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+
+.footer {
+    font-size: 15px;
+    padding-top: 40px;
+    margin-bottom: 20px;
+    color: #808080;
+}
+
