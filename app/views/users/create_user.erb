@@ -1,4 +1,8 @@
 <div class="container-fluid">
+<% if flash.has?(:message) %>
+  <h4><%= flash[:message] %></h4>
+<% end %>
+
 <h1>Create an Account to Report an Alarm</h1>
 
 <form action="/signup" method="POST">

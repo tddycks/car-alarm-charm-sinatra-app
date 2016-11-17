@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  use Rack::Flash
+
   get "/signup" do
     if logged_in?
       redirect "/events"
@@ -25,7 +27,8 @@ class UsersController < ApplicationController
       user.update(admin_id: "1")
       redirect "/events"
     else
-      redirect "/signup"
+      flash[:message] = "Please enter a username, email address and password. If you have done this and you're still getting this message, the username or email address may be taken."
+      erb :"users/create_user", :layout => :"public/layout"
     end
   end
 
@@ -35,7 +38,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/events"
     else
-      redirect "/login"
+      flash[:message] = "Please enter a valid username and password."
+      erb :"users/login", :layout => :"public/layout"
     end
   end
 
