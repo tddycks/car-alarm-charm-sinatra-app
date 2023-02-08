@@ -4,7 +4,7 @@ Welcome to CarAlarmCharm. This app was created after a recent experience where a
 
 About
 
-CarAlarmCharm was created by Tadzio Smith, a full-stack web developer studying the Learn.Co curriculum of the Flatiron School. Feel free to contact him at tadzio.smith@gmail.com
+CarAlarmCharm was created by Tadzio Smith, a product guy playing around with code. Feel free to contact him at tadzio.smith@gmail.com
 
 Usage
 
